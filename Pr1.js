@@ -1,13 +1,16 @@
 /*R-1)Create a react class component having state variables name and feespaid to store person’s name and the status of fees paid (true/false) respectively. Render the values of the above state variables using a textbox and checkbox.*/
 
+/*R-2) Modify the above component to include another state variable called color.  In the render function of the component  check the status of the fee ,If true the message ‘ Fees paid shild be displayed using the <h2> element otherwise display the message Fees not paid in the font color determined by the ‘color’ state variable.
+Objectives/features t o use: Class component,state variables, creating conditional JSX element , ternary conditional  operator.*/
 import React from "react";
 
-class Pr1 extends React.Component {
-    constructor(props){
-        super(props);
+class PersonInfo extends React.Component {
+    constructor(){
+        super();
         this.state = {
             name: '',
-            feesPaid: false
+            feesPaid: false,
+            color: "green"
         }
         console.log(this.state)
     }
@@ -29,10 +32,10 @@ class Pr1 extends React.Component {
                 <input type = "checkbox" value={this.state.feesPaid} onChange = {this.handleFeesPaid} />
 
                 <h3>Name: {this.state.name}</h3>
-                <h3>{this.state.feesPaid?"Fees Paid: Paid": "Fees Paid: Not Paid"}</h3>
+                {this.state.feesPaid?<h3 style = {{color: this.state.color}}>"Fees Paid : Paid"</h3>: <h3>"Fees Paid: Not Paid"</h3>}
             </>
         )
     }
 }
 
-export default Pr1;
+export default PersonInfo;
